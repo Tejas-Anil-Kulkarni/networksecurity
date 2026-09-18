@@ -1,0 +1,93 @@
+Abnormal_URL:
+  drift_status: false
+  p_value: 0.9999999999997877
+DNSRecord:
+  drift_status: false
+  p_value: 0.999230651758703
+Domain_registeration_length:
+  drift_status: false
+  p_value: 0.9958579353974752
+Favicon:
+  drift_status: false
+  p_value: 1.0
+Google_Index:
+  drift_status: false
+  p_value: 0.9999982228268777
+HTTPS_token:
+  drift_status: false
+  p_value: 0.9999999977781104
+Iframe:
+  drift_status: false
+  p_value: 0.999931781258988
+Links_in_tags:
+  drift_status: false
+  p_value: 0.9999836499887566
+Links_pointing_to_page:
+  drift_status: false
+  p_value: 1.0
+Page_Rank:
+  drift_status: false
+  p_value: 0.918796249345484
+Prefix_Suffix:
+  drift_status: false
+  p_value: 0.9999999999598222
+Redirect:
+  drift_status: false
+  p_value: 0.9999998996954222
+Request_URL:
+  drift_status: false
+  p_value: 1.0
+Result:
+  drift_status: false
+  p_value: 1.0
+RightClick:
+  drift_status: false
+  p_value: 0.9999062353866229
+SFH:
+  drift_status: false
+  p_value: 0.9876237011526984
+SSLfinal_State:
+  drift_status: false
+  p_value: 0.9999836499887566
+Shortining_Service:
+  drift_status: false
+  p_value: 0.9999982228268777
+Statistical_report:
+  drift_status: false
+  p_value: 0.9999999947754254
+Submitting_to_email:
+  drift_status: false
+  p_value: 0.9914952304622426
+URL_Length:
+  drift_status: false
+  p_value: 1.0
+URL_of_Anchor:
+  drift_status: false
+  p_value: 0.999230651758703
+age_of_domain:
+  drift_status: false
+  p_value: 0.9999654772410788
+double_slash_redirecting:
+  drift_status: false
+  p_value: 0.998821814236978
+having_At_Symbol:
+  drift_status: false
+  p_value: 0.9999971010402764
+having_IP_Address:
+  drift_status: false
+  p_value: 1.0
+having_Sub_Domain:
+  drift_status: false
+  p_value: 0.9995152509457711
+on_mouseover:
+  drift_status: false
+  p_value: 1.0
+popUpWidnow:
+  drift_status: false
+  p_value: 0.9999999999965016
+port:
+  drift_status: false
+  p_value: 1.0
+web_traffic:
+  drift_status: false
+  p_value: 0.9999999999598222

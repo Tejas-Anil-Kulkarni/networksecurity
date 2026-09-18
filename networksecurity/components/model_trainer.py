@@ -23,16 +23,17 @@ from sklearn.ensemble import (
     GradientBoostingClassifier,
     RandomForestClassifier,
 )
-# import mlflow
-# from urllib.parse import urlparse
+import mlflow
+from urllib.parse import urlparse
 
-# import dagshub
-# #dagshub.init(repo_owner='Tejas-Anil-Kulkarni', repo_name='networksecurity', mlflow=True)
+import dagshub
+from dotenv import load_dotenv
 
-# os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/Tejas-Anil-Kulkarni/networksecurity.mlflow"
-# os.environ["MLFLOW_TRACKING_USERNAME"]="Tejas-Anil-Kulkarni"
-# os.environ["MLFLOW_TRACKING_PASSWORD"]="7104284f1bb44ece21e0e2adb4e36a250ae3251f"
+load_dotenv()
 
+os.environ["MLFLOW_TRACKING_URI"] = os.getenv("MLFLOW_TRACKING_URI")
+os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv("MLFLOW_TRACKING_USERNAME")
+os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv("MLFLOW_TRACKING_PASSWORD")
 
 
 
@@ -45,50 +46,65 @@ class ModelTrainer:
         except Exception as e:
             raise NetworkSecurityException(e,sys)
         
-    # def track_mlflow(self, best_model, classificationmetric):
+    def track_mlflow(self, best_model, classification_train_metric, classification_test_metric):
 
-    #     try:
+        try:
 
-    #         mlflow.set_tracking_uri(
-    #             "https://dagshub.com/Tejas-Anil-Kulkarni/networksecurity.mlflow"
-    #         )
+            mlflow.set_tracking_uri(
+                os.getenv("MLFLOW_TRACKING_URI")
+            )
 
-    #         mlflow.set_registry_uri(
-    #             "https://dagshub.com/Tejas-Anil-Kulkarni/networksecurity.mlflow"
-    #         )
+            with mlflow.start_run():
 
-    #         tracking_url_type_store = urlparse(
-    #             mlflow.get_tracking_uri()
-    #         ).scheme
+                # =========================
+                # TRAIN METRICS
+                # =========================
 
-    #         with mlflow.start_run():
+                mlflow.log_metric(
+                    "train_f1_score",
+                    classification_train_metric.f1_score
+                )
 
-    #             f1_score = classificationmetric.f1_score
-    #             precision_score = classificationmetric.precision_score
-    #             recall_score = classificationmetric.recall_score
+                mlflow.log_metric(
+                    "train_precision",
+                    classification_train_metric.precision_score
+                )
 
-    #             mlflow.log_metric("f1_score", f1_score)
-    #             mlflow.log_metric("precision", precision_score)
-    #             mlflow.log_metric("recall_score", recall_score)
+                mlflow.log_metric(
+                    "train_recall",
+                    classification_train_metric.recall_score
+                )
 
-    #             if tracking_url_type_store != "file":
+                # =========================
+                # TEST METRICS
+                # =========================
 
-    #                 mlflow.sklearn.log_model(
-    #                     best_model,
-    #                     "model",
-    #                     registered_model_name="NetworkSecurityModel"
-    #                 )
+                mlflow.log_metric(
+                    "test_f1_score",
+                    classification_test_metric.f1_score
+                )
 
-    #             else:
+                mlflow.log_metric(
+                    "test_precision",
+                    classification_test_metric.precision_score
+                )
 
-    #                 mlflow.sklearn.log_model(
-    #                     best_model,
-    #                     "model"
-    #                 )
+                mlflow.log_metric(
+                    "test_recall",
+                    classification_test_metric.recall_score
+                )
 
-    #     except Exception as e:
-    #         raise NetworkSecurityException(e, sys)
+                # =========================
+                # SAVE MODEL
+                # =========================
 
+                mlflow.sklearn.log_model(
+                    best_model,
+                    "model"
+                )
+
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
 
         
     def train_model(self,X_train,y_train,x_test,y_test):
@@ -141,15 +157,15 @@ class ModelTrainer:
         y_train_pred=best_model.predict(X_train)
 
         classification_train_metric=get_classification_score(y_true=y_train,y_pred=y_train_pred)
-        
-        ## Track the experiements with mlflow
-        # self.track_mlflow(best_model,classification_train_metric)
-
 
         y_test_pred=best_model.predict(x_test)
         classification_test_metric=get_classification_score(y_true=y_test,y_pred=y_test_pred)
-
-        # self.track_mlflow(best_model,classification_test_metric)
+        ## Track the experiements with mlflow
+        self.track_mlflow(
+                    best_model,
+                    classification_train_metric,
+                    classification_test_metric
+                )
 
         preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
             

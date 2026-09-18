@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NetSec AI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="background-grid"></div>
+
+    <div class="container">
+
+        <!-- ================= NAVBAR ================= -->
+
+        <nav class="navbar">
+
+            <div class="brand">
+
+                <div class="brand-logo">
+                    N
+                </div>
+
+                <div class="brand-text">
+
+                    <div class="brand-title">
+                        NETSEC AI
+                    </div>
+
+                    <div class="brand-subtitle">
+                        Network Security Intelligence
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="api-status">
+
+                <span class="status-dot"></span>
+
+                API ONLINE
+
+            </div>
+
+        </nav>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <div class="eyebrow">
+                ✦ MACHINE LEARNING SECURITY ENGINE
+            </div>
+
+
+            <h1>
+
+                Detect threats.
+
+                <br>
+
+                <span>
+                    Protect networks.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Upload your network traffic dataset and let
+                our machine learning pipeline analyze the
+                data for potential security threats.
+
+            </p>
+
+        </section>
+
+
+        <!-- ================= ACTIONS ================= -->
+
+        <section class="action-grid">
+
+
+            <!-- ================= PREDICTION CARD ================= -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ⇧
+                </div>
+
+
+                <h2>
+                    Analyze Dataset
+                </h2>
+
+
+                <p class="card-description">
+
+                    Upload a CSV containing network traffic
+                    features and generate predictions using
+                    the trained model.
+
+                </p>
+
+
+                <form id="predictionForm">
+
+
+                    <label
+                        for="fileInput"
+                        class="upload-area"
+                        id="dropArea"
+                    >
+
+                        <div class="upload-icon">
+                            ◈
+                        </div>
+
+
+                        <strong>
+                            Drop your CSV here
+                        </strong>
+
+
+                        <span>
+                            or click to browse
+                        </span>
+
+
+                        <input
+                            type="file"
+                            id="fileInput"
+                            accept=".csv"
+                        >
+
+
+                        <div
+                            id="fileName"
+                            class="file-name"
+                        ></div>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                        id="predictBtn"
+                    >
+
+                        Analyze Network Traffic
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- ================= TRAINING CARD ================= -->
+
+            <div class="card">
+
+                <div class="card-icon training-icon">
+                    ⚙
+                </div>
+
+
+                <h2>
+                    Train Model
+                </h2>
+
+
+                <p class="card-description">
+
+                    Run the complete training pipeline,
+                    evaluate models and generate a new
+                    production model.
+
+                </p>
+
+
+                <div class="training-status">
+
+                    <div
+                        class="training-indicator"
+                        id="trainingIndicator"
+                    >
+
+                        <span id="trainingSpinner"></span>
+
+                        <span id="trainingIcon">
+                            ●
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="trainingTitle">
+                            Model Ready
+                        </strong>
+
+                        <p id="trainingMessage">
+
+                            Start the training pipeline
+                            when required.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="secondary-button"
+                    id="trainBtn"
+                >
+
+                    Start Training
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= RESULTS ================= -->
+
+        <section class="results-section">
+
+
+            <div class="results-header">
+
+                <div>
+
+                    <h2>
+                        Prediction Results
+                    </h2>
+
+                    <p>
+                        Network traffic classification output
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="result-count"
+                    id="resultCount"
+                >
+
+                    No analysis yet
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="results-container"
+                id="resultsContainer"
+            >
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        ◌
+                    </div>
+
+                    <h3>
+                        No predictions yet
+                    </h3>
+
+                    <p>
+                        Upload a CSV dataset to see
+                        your prediction results here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <span>
+                NETSEC AI
+            </span>
+
+            <span>
+                •
+            </span>
+
+            Machine Learning Network Security System
+
+        </footer>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        id="toast"
+        class="toast"
+    ></div>
+
+
+    <script src="/static/js/script.js"></script>
+
+</body>
+
+</html>
+```
